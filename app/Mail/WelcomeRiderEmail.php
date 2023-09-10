@@ -28,7 +28,7 @@ class WelcomeRiderEmail extends Mailable
     {
         return new Envelope(
             from: new Address('KUWongnai@ku.th', 'KU Wongnai'),
-            subject: 'Welcome to Our KU Wongnai Delivery',
+            subject: 'Welcome to KU Wongnai - Your Journey Begins Here!',
         );
     }
 

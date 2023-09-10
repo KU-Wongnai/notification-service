@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class WelcomeUserEmail extends Mailable
+class WelcomeRestaurantEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,7 +28,7 @@ class WelcomeUserEmail extends Mailable
     {
         return new Envelope(
             from: new Address('KUWongnai@ku.th', 'KU Wongnai'),
-            subject: 'Welcome to KU Wongnai - Your Culinary Adventure Begins!',
+            subject: 'Welcome to KU Wongnai - Expand Your Reach and Delight Customers!',
         );
     }
 
@@ -38,7 +38,7 @@ class WelcomeUserEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.welcome-user',
+            view: 'emails.welcome-restaurant',
         );
     }
 
