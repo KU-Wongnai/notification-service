@@ -22,8 +22,20 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $user = new User();
-        $user->name = 'Test User'; 
+        $user->name = 'Test User1'; 
         $user->email = 'test1@gmail.com';
+        $user->password = bcrypt('password');
+        $user->save();
+
+        $user = new User();
+        $user->name = 'Test User2'; 
+        $user->email = 'test2@gmail.com';
+        $user->password = bcrypt('password');
+        $user->save();
+
+        $user = new User();
+        $user->name = 'Test User3'; 
+        $user->email = 'test3@gmail.com';
         $user->password = bcrypt('password');
         $user->save();
     }
