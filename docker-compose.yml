@@ -21,6 +21,7 @@ services:
             - ".:/var/www/html"
         networks:
             - sail
+            - user-service_sail
         depends_on:
             - mysql
             - redis
@@ -74,6 +75,8 @@ services:
 networks:
     sail:
         driver: bridge
+    user-service_sail:
+        external: true
 volumes:
     sail-mysql:
         driver: local
