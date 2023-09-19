@@ -34,6 +34,8 @@ MAIL_FROM_ADDRESS="hello@example.com"
 MAIL_FROM_NAME="${APP_NAME}"
 ```
 
+Make sure you have the network called `ku-wongnai_ku-wongnai` this use for connect to RabbitMQ
+
 Run the following command to start the service
 
 ```sh
@@ -44,6 +46,12 @@ Run the following command to run migration and seed data. Which will create samp
 
 ```sh
 sail artisan migrate:fresh --seed
+```
+
+Run the following command to start the consume message from RabbitMQ
+
+```sh
+sail artisan rabbitmq:consume
 ```
 
 > If some of service can't be run make sure that the port you are using is not used by other service.
