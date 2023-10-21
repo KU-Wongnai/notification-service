@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\User;
+use Illuminate\Notifications\Messages\BroadcastMessage;
 
 class WelcomeNewUser extends Notification
 {
@@ -28,7 +29,7 @@ class WelcomeNewUser extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['database'];
+        return ['database', 'broadcast'];
     }
 
     /**
@@ -51,4 +52,25 @@ class WelcomeNewUser extends Notification
     {
         return 'Welcome to KU Wongnai. Share your favorite food with our community and inspire others.';
     }
+
+    public function toBroadcast($notifiable): BroadcastMessage
+    {
+        // return new BroadcastMessage($this->toArray($notifiable));
+        return (new BroadcastMessage([
+            'message' => 'Welcome to KU Wongnai. Share your favorite food with our community and inspire others.',
+         
+        ]));
+    }
+
+    /**
+     * Get the type of the notification being broadcast.
+     */
+    
+    // อันนี้เปลี่ยนชื่อ Type ของ Notification ที่จะส่งไปให้ Frontend
+    // public function broadcastType(): string
+    // {
+    //     // return 'broadcast.message';
+    //     return 'welcome-new-user';
+
+    // }
 }

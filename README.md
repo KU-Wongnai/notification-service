@@ -21,6 +21,15 @@ Copy `.env.example` to `.env`
 cp .env.example .env
 ```
 
+Copy this key from Pusher(https://pusher.com/) to `.env`
+
+```
+PUSHER_APP_ID=
+PUSHER_APP_KEY=
+PUSHER_APP_SECRET=
+PUSHER_APP_CLUSTER=
+```
+
 For local development, you can use Mailpit to test sending emails. You can go to http://localhost:8025 to see the sent emails.
 
 ```
