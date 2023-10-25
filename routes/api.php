@@ -3,6 +3,7 @@
 use App\Events\WelcomeNewRider as EventsWelcomeNewRider;
 use App\Events\WelcomeNewUser as EventsWelcomeNewUser;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\UserCreateController;
 use App\Models\User;
 use App\Mail\ResetPasswordEmail;
 use App\Mail\WelcomeRestaurantEmail;
@@ -137,3 +138,11 @@ Route::get('/notifications/{id}', [NotificationController::class, 'getAllNotific
 // Route::get('/noti/trytry/{id}',[NotificationController::class, 'sendTry']); 
 
 
+// Route::get('/test/{id}', function ($id) {   // this user has new reply on review
+
+//     $user = new UserCreateController();
+//     $user = $user->create($id);
+//     $user->notify(new WelcomeNewUser());
+
+//     return response()->json($user->notifications->first());
+// });

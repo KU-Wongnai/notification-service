@@ -103,15 +103,9 @@ class NotificationController extends Controller
     // User part
     public function sendWelcomeNewUser(string $id)
     {
-        $user = User::find($id);
-        if ($user == null) {
-            $user = new User();
-            $user->id = $id;
-            $user->name = '';
-            $user->email = '';
-            $user->password = bcrypt('12345678');
-            $user->save();
-        }
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
         $user->notify(new WelcomeNewUser());
         broadcast(new EventsWelcomeNewUser($user));
         return response()->json($user->notifications->first());
@@ -120,15 +114,9 @@ class NotificationController extends Controller
 
     public function sendUserReviewHasReplied(string $id)
     {
-        $user = User::find($id);
-        if ($user == null) {
-            $user = new User();
-            $user->id = $id;
-            $user->name = '';
-            $user->email = '';
-            $user->password = bcrypt('12345678');
-            $user->save();
-        }
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
         $user->notify(new UserReviewHasReplied());
         broadcast(new EventsUserReviewHasReplied($user));
         return response()->json($user->notifications->first());
@@ -137,15 +125,9 @@ class NotificationController extends Controller
 
     public function sendUserReviewNewFollower(string $id)
     {
-        $user = User::find($id);
-        if ($user == null) {
-            $user = new User();
-            $user->id = $id;
-            $user->name = '';
-            $user->email = '';
-            $user->password = bcrypt('12345678');
-            $user->save();
-        }
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
         $user->notify(new UserReviewNewFollower());
         broadcast(new EventsUserReviewNewFollower($user));
         return response()->json($user->notifications->first());
@@ -154,15 +136,9 @@ class NotificationController extends Controller
 
     public function sendUserReviewWeekly(string $id)
     {
-        $user = User::find($id);
-        if ($user == null) {
-            $user = new User();
-            $user->id = $id;
-            $user->name = '';
-            $user->email = '';
-            $user->password = bcrypt('12345678');
-            $user->save();
-        }
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
         $user->notify(new UserReviewWeeklyChallenge());
         broadcast(new EventsUserReviewWeeklyChallenge($user));
         return response()->json($user->notifications->first());
@@ -171,15 +147,9 @@ class NotificationController extends Controller
 
     public function sendThankUser(string $id)
     {
-        $user = User::find($id);
-        if ($user == null) {
-            $user = new User();
-            $user->id = $id;
-            $user->name = '';
-            $user->email = '';
-            $user->password = bcrypt('12345678');
-            $user->save();
-        }
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
         $user->notify(new ThankUser());
         broadcast(new EventsThankUser($user));
         return response()->json($user->notifications->first());
@@ -188,15 +158,9 @@ class NotificationController extends Controller
     // User delivery part
     public function sendUserDeliveryOrder(string $id)
     {
-        $user = User::find($id);
-        if ($user == null) {
-            $user = new User();
-            $user->id = $id;
-            $user->name = '';
-            $user->email = '';
-            $user->password = bcrypt('12345678');
-            $user->save();
-        }
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
         $user->notify(new UserDeliveryOrder());
         broadcast(new EventsUserDeliveryOrder($user));
         return response()->json($user->notifications->first());
@@ -205,15 +169,9 @@ class NotificationController extends Controller
 
     public function sendUserDeliveryWait(string $id)
     {
-        $user = User::find($id);
-        if ($user == null) {
-            $user = new User();
-            $user->id = $id;
-            $user->name = '';
-            $user->email = '';
-            $user->password = bcrypt('12345678');
-            $user->save();
-        }
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
         $user->notify(new UserDeliveryWait());
         broadcast(new EventsUserDeliveryWait($user));
         return response()->json($user->notifications->first());
@@ -222,15 +180,9 @@ class NotificationController extends Controller
 
     public function sendUserDeliveryFinished(string $id)
     {
-        $user = User::find($id);
-        if ($user == null) {
-            $user = new User();
-            $user->id = $id;
-            $user->name = '';
-            $user->email = '';
-            $user->password = bcrypt('12345678');
-            $user->save();
-        }
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
         $user->notify(new UserDeliveryFinished());
         broadcast(new EventsUserDeliveryFinished($user));
         return response()->json($user->notifications->first());
@@ -239,15 +191,9 @@ class NotificationController extends Controller
 
     public function sendUserDeliveryRemindReview(string $id)
     {
-        $user = User::find($id);
-        if ($user == null) {
-            $user = new User();
-            $user->id = $id;
-            $user->name = '';
-            $user->email = '';
-            $user->password = bcrypt('12345678');
-            $user->save();
-        }
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
         $user->notify(new UserDeliveryRemindReview());
         broadcast(new EventsUserDeliveryRemindReview($user));
         return response()->json($user->notifications->first());
@@ -256,15 +202,9 @@ class NotificationController extends Controller
 
     public function sendUserDeliveryReorder(string $id)
     {
-        $user = User::find($id);
-        if ($user == null) {
-            $user = new User();
-            $user->id = $id;
-            $user->name = '';
-            $user->email = '';
-            $user->password = bcrypt('12345678');
-            $user->save();
-        }
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
         $user->notify(new UserDeliveryReorder());
         broadcast(new EventsUserDeliveryReorder($user));
         return response()->json($user->notifications->first());
@@ -273,15 +213,9 @@ class NotificationController extends Controller
     // Rider part
     public function sendWelcomeNewRider(string $id)
     {
-        $user = User::find($id);
-        if ($user == null) {
-            $user = new User();
-            $user->id = $id;
-            $user->name = '';
-            $user->email = '';
-            $user->password = bcrypt('12345678');
-            $user->save();
-        }
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
         $user->notify(new WelcomeNewRider());
         broadcast(new EventsWelcomeNewRider($user));
         return response()->json($user->notifications->first());
@@ -290,15 +224,9 @@ class NotificationController extends Controller
 
     public function sendRiderNewOrder(string $id)
     {
-        $user = User::find($id);
-        if ($user == null) {
-            $user = new User();
-            $user->id = $id;
-            $user->name = '';
-            $user->email = '';
-            $user->password = bcrypt('12345678');
-            $user->save();
-        }
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
         $user->notify(new RiderNewOrder());
         broadcast(new EventsRiderNewOrder($user));
         return response()->json($user->notifications->first());
@@ -307,15 +235,9 @@ class NotificationController extends Controller
 
     public function sendRiderOrderOnWay(string $id)
     {
-        $user = User::find($id);
-        if ($user == null) {
-            $user = new User();
-            $user->id = $id;
-            $user->name = '';
-            $user->email = '';
-            $user->password = bcrypt('12345678');
-            $user->save();
-        }
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
         $user->notify(new RiderOrderOnWay());
         broadcast(new EventsRiderOrderOnWay($user));
         return response()->json($user->notifications->first());
@@ -324,15 +246,9 @@ class NotificationController extends Controller
 
     public function sendRiderOrderFinished(string $id)
     {
-        $user = User::find($id);
-        if ($user == null) {
-            $user = new User();
-            $user->id = $id;
-            $user->name = '';
-            $user->email = '';
-            $user->password = bcrypt('12345678');
-            $user->save();
-        }
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
         $user->notify(new RiderOrderFinished());
         broadcast(new EventsRiderOrderFinished($user));
         return response()->json($user->notifications->first());
@@ -341,15 +257,9 @@ class NotificationController extends Controller
 
     public function sendRiderSafetyReminder(string $id)
     {
-        $user = User::find($id);
-        if ($user == null) {
-            $user = new User();
-            $user->id = $id;
-            $user->name = '';
-            $user->email = '';
-            $user->password = bcrypt('12345678');
-            $user->save();
-        }
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
         $user->notify(new RiderSafetyReminder());
         broadcast(new EventsRiderSafetyReminder($user));
         return response()->json($user->notifications->first());
@@ -358,15 +268,9 @@ class NotificationController extends Controller
 
     public function sendThankRider(string $id)
     {
-        $user = User::find($id);
-        if ($user == null) {
-            $user = new User();
-            $user->id = $id;
-            $user->name = '';
-            $user->email = '';
-            $user->password = bcrypt('12345678');
-            $user->save();
-        }
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
         $user->notify(new ThankRider());
         broadcast(new EventsThankRider($user));
         return response()->json($user->notifications->first());
@@ -375,15 +279,9 @@ class NotificationController extends Controller
     // Restaurant part
     public function sendWelcomeNewRestaurant(string $id)
     {
-        $user = User::find($id);
-        if ($user == null) {
-            $user = new User();
-            $user->id = $id;
-            $user->name = '';
-            $user->email = '';
-            $user->password = bcrypt('12345678');
-            $user->save();
-        }
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
         $user->notify(new WelcomeNewRestaurant());
         broadcast(new EventsWelcomeNewRestaurant($user));
         return response()->json($user->notifications->first());
@@ -393,15 +291,9 @@ class NotificationController extends Controller
 
     public function sendRestaurantHasReview(string $id)
     {
-        $user = User::find($id);
-        if ($user == null) {
-            $user = new User();
-            $user->id = $id;
-            $user->name = '';
-            $user->email = '';
-            $user->password = bcrypt('12345678');
-            $user->save();
-        }
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
         $user->notify(new RestaurantHasReview());
         broadcast(new EventsRestaurantHasReview($user));
         return response()->json($user->notifications->first());
@@ -412,15 +304,9 @@ class NotificationController extends Controller
 
     public function getAllNotification(string $id)
     {
-        $user = User::find($id);
-        if ($user == null) {
-            $user = new User();
-            $user->id = $id;
-            $user->name = '';
-            $user->email = '';
-            $user->password = bcrypt('12345678');
-            $user->save();
-        }
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
         return response()->json($user->notifications);
     }
 
