@@ -47,6 +47,8 @@ class ThankUser extends Notification
      */
     public function toArray(object $notifiable)
     {
-        return 'Thank you for being a valued member of our community. We appreciate your contributions!';
+        return [ 'type' => 'User',
+                'message' => 'Thank you for being a valued member of our community. We appreciate your contributions!',];
+
     }
 }

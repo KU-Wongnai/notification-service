@@ -47,6 +47,8 @@ class UserReviewWeeklyChallenge extends Notification
      */
     public function toArray(object $notifiable)
     {
-        return 'Stay tuned for our weekly \'Food Challenge.\' Get creative with your reviews!';
+        return [ 'type' => 'User',
+                'message' => 'Stay tuned for our weekly \'Food Challenge.\' Get creative with your reviews!',];
+
     }
 }

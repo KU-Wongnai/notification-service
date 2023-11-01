@@ -47,6 +47,8 @@ class TryNoti extends Notification
      */
     public function toArray(object $notifiable)
     {
-        return 'try try try';
+        return [ 'type' => 'Try',
+                'message' => 'try try try',];
+
     }
 }

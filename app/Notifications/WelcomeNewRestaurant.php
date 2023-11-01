@@ -47,6 +47,8 @@ class WelcomeNewRestaurant extends Notification
      */
     public function toArray(object $notifiable)
     {
-        return 'Welcome to KU Wongnai for Restaurants! Start managing your online reputation.';
+        return [ 'type' => 'Restaurant',
+                'message' => 'Welcome to KU Wongnai for Restaurants! Start managing your online reputation.',];
+
     }
 }

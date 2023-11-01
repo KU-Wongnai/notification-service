@@ -47,6 +47,7 @@ class RiderNewOrder extends Notification
      */
     public function toArray(object $notifiable)
     {
-        return 'New delivery requests are available in your area. Get ready to ride!';
+        return [ 'type' => 'Rider',
+                'message' => 'New delivery requests are available in your area. Get ready to ride!',];
     }
 }

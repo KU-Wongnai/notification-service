@@ -47,6 +47,8 @@ class RiderSafetyReminder extends Notification
      */
     public function toArray(object $notifiable)
     {
-        return 'Don\'t forget to stay safe on the road. Check your safety tips in the app.';
+        return [ 'type' => 'Rider',
+                'message' => 'Don\'t forget to stay safe on the road. Check your safety tips in the app.',];
+
     }
 }

@@ -47,6 +47,8 @@ class UserDeliveryRemindReview extends Notification
      */
     public function toArray(object $notifiable)
     {
-        return 'Don\'t forget to rate your recent delivery and let us know how it was.';
+        return [ 'type' => 'User',
+                'message' => 'Don\'t forget to rate your recent delivery and let us know how it was.',];
+
     }
 }

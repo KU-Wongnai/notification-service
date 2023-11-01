@@ -47,7 +47,7 @@ class WelcomeNewRider extends Notification
      */
     public function toArray(object $notifiable)
     {
-        return 'Welcome to KU Wongnai! You\'re all set to start delivering delicious meals.';
-        
+        return [ 'type' => 'Rider',
+                'message' => 'Welcome to KU Wongnai! You\'re all set to start delivering delicious meals.'];
     }
 }

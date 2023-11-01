@@ -47,6 +47,8 @@ class UserDeliveryWait extends Notification
      */
     public function toArray(object $notifiable)
     {
-        return 'Your order is on its way!';
+        return [ 'type' => 'User',
+                'message' => 'Your order is on its way!',];
+
     }
 }

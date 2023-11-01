@@ -134,6 +134,8 @@ Route::get('/restaurant/noti/has-review/{id}', [NotificationController::class, '
 
 Route::get('/notifications/{id}', [NotificationController::class, 'getAllNotification']);
 
+Route::post('/notifications/{userId}/mark-as-read/{notiId}', [NotificationController::class, 'markAsRead']);
+
 
 // Route::get('/noti/trytry/{id}',[NotificationController::class, 'sendTry']); 
 

@@ -47,6 +47,8 @@ class UserReviewHasReplied extends Notification
      */
     public function toArray(object $notifiable)
     {
-        return 'A user replied to your comment on their review. Join the conversation!';
+        return [ 'type' => 'User',
+                'message' => 'A user replied to your comment on their review. Join the conversation!',];
+
     }
 }

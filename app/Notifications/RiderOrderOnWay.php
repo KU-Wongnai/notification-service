@@ -47,6 +47,8 @@ class RiderOrderOnWay extends Notification
      */
     public function toArray(object $notifiable)
     {
-        return 'Your delivery is on its way to the customer.';
+        return [ 'type' => 'Rider',
+                'message' => 'Your delivery is on its way to the customer.',];
+
     }
 }

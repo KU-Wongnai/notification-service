@@ -47,6 +47,8 @@ class RiderOrderFinished extends Notification
      */
     public function toArray(object $notifiable)
     {
-        return 'You\'ve successfully finished your latest delivery. Keep up the excellent work!';
+        return [ 'type' => 'Rider',
+                'message' => 'You\'ve successfully finished your latest delivery. Keep up the excellent work!',];
+
     }
 }

@@ -47,6 +47,8 @@ class ThankRider extends Notification
      */
     public function toArray(object $notifiable)
     {
-        return 'We appreciate your dedication to our customers. Thank you for your hard work!';
+        return [ 'type' => 'Rider',
+                'message' => 'We appreciate your dedication to our customers. Thank you for your hard work!',];
+
     }
 }

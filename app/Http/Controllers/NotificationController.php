@@ -46,6 +46,7 @@ use App\Notifications\WelcomeNewUser;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification as FacadesNotification;
 
 class NotificationController extends Controller
 {
@@ -310,6 +311,14 @@ class NotificationController extends Controller
         return response()->json($user->notifications);
     }
 
+    public function markAsRead(string $userId, string $notiId)
+    {
+        $user = new UserCreateController();
+        $user = $user->create($userId);
+        $noti = $user->notifications->where('id', $notiId)->first();
+        $noti->markAsRead();
+        return response()->json($noti);
+    }
 
     
 }

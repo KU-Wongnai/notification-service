@@ -50,7 +50,9 @@ class WelcomeNewUser extends Notification
      */
     public function toArray(object $notifiable)
     {
-        return 'Welcome to KU Wongnai. Share your favorite food with our community and inspire others.';
+        return [ 'type' => 'User',
+                'message' => 'Welcome to KU Wongnai. Share your favorite food with our community and inspire others.',];
+        // return 'Welcome to KU Wongnai. Share your favorite food with our community and inspire others.';
     }
 
     public function toBroadcast($notifiable): BroadcastMessage

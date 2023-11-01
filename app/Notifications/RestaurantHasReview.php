@@ -47,6 +47,7 @@ class RestaurantHasReview extends Notification
      */
     public function toArray(object $notifiable)
     {
-        return 'New reviews have been posted for your restaurant. Check them out!';
+        return [ 'type' => 'Restaurant',
+                'message' => 'New reviews have been posted for your restaurant. Check them out!',];
     }
 }

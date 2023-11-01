@@ -46,7 +46,7 @@ class UserDeliveryReorder extends Notification
      * @return array<string, mixed>
      */
     public function toArray(object $notifiable)
-    {
-        return 'Feeling hungry? Reorder your last meal with just a few taps.';
+    {   return [ 'type' => 'User',
+                'message' => 'Feeling hungry? Reorder your last meal with just a few taps.',];
     }
 }

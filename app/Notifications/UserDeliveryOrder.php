@@ -47,6 +47,8 @@ class UserDeliveryOrder extends Notification
      */
     public function toArray(object $notifiable)
     {
-        return 'Your order has been placed! Thank you for using our application.';
+        return [ 'type' => 'User',
+                'message' => 'Your order has been placed! Thank you for using our application.',];
+
     }
 }

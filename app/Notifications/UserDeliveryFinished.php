@@ -47,6 +47,8 @@ class UserDeliveryFinished extends Notification
      */
     public function toArray(object $notifiable)
     {
-        return 'Your delivery has been successfully completed! We hope you enjoyed your meal.';
+        return [ 'type' => 'User',
+                'message' => 'Your delivery has been successfully completed! We hope you enjoyed your meal.',];
+
     }
 }

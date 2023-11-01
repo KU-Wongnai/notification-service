@@ -47,6 +47,8 @@ class UserReviewNewFollower extends Notification
      */
     public function toArray(object $notifiable)
     {
-        return 'Check out the new followers who are interested in your reviews.';
+        return [ 'type' => 'User',
+                'message' => 'Check out the new followers who are interested in your reviews.',];
+
     }
 }
