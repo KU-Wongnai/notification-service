@@ -109,6 +109,12 @@ Route::get('/user/noti/delivery-remind-review/{id}', [NotificationController::cl
 
 Route::get('/user/noti/delivery-reorder/{id}', [NotificationController::class, 'sendUserDeliveryReorder']);
 
+Route::get('/user/noti/success-payment/{id}', [NotificationController::class, 'sendUserSuccessPayment']);
+
+Route::get('/user/noti/order-canceled/{id}', [NotificationController::class, 'sendUserOrderCanceled']);
+
+Route::get('/user/noti/review-has-comment/{id}', [NotificationController::class, 'sendUserReviewHasComment']);
+
 
     // Rider part
 
@@ -124,6 +130,11 @@ Route::get('/rider/noti/safety-reminder/{id}', [NotificationController::class, '
 
 Route::get('/rider/noti/thank/{id}', [NotificationController::class, 'sendThankRider']);
 
+Route::get('/rider/noti/order-canceled/{id}', [NotificationController::class, 'sendRiderOrderCanceled']);
+
+Route::get('/rider/noti/create-account/{id}', [NotificationController::class, 'sendRiderCreateAccount']);
+
+Route::get('/rider/noti/rejected-account/{id}', [NotificationController::class, 'sendRiderRejectedAccount']);
 
     // Restaurant part
 Route::get('/restaurant/noti/welcome/{id}', [NotificationController::class, 'sendWelcomeNewRestaurant']);

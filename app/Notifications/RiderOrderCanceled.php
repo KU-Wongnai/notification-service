@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class WelcomeNewRider extends Notification
+class RiderOrderCanceled extends Notification
 {
     use Queueable;
 
@@ -48,6 +48,6 @@ class WelcomeNewRider extends Notification
     public function toArray(object $notifiable)
     {
         return [ 'type' => 'Rider',
-                'message' => 'Your rider role has been verified. Welcome to KU Wongnai! You\'re all set to start delivering delicious meals.'];
+                'message' => 'Dear rider, we regret to inform you that the order has been canceled. We apologize for any inconvenience this may have caused.',];
     }
 }

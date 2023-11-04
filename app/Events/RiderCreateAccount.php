@@ -11,9 +11,10 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class WelcomeNewRider implements ShouldBroadcast
+class RiderCreateAccount
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+
     public $user;
     /**
      * Create a new event instance.
@@ -51,7 +52,6 @@ class WelcomeNewRider implements ShouldBroadcast
      */
     public function broadcastWith(): array
     {
-        return ['message' => 'Your rider role has been verified. Welcome to KU Wongnai! You\'re all set to start delivering delicious meals.'];
+        return ['message' => 'Your account has been created successfully. We are currently verifying your information. You will be notified once the verification process is complete.'];
     }
-
 }

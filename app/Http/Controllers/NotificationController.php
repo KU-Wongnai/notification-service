@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Events\RestaurantHasReview as EventsRestaurantHasReview;
+use App\Events\RiderCreateAccount as EventsRiderCreateAccount;
 use App\Events\RiderNewOrder as EventsRiderNewOrder;
+use App\Events\RiderOrderCanceled as EventsRiderOrderCanceled;
 use App\Events\RiderOrderFinished as EventsRiderOrderFinished;
 use App\Events\RiderOrderOnWay as EventsRiderOrderOnWay;
+use App\Events\RiderRejectedAccount as EventsRiderRejectedAccount;
 use App\Events\RiderSafetyReminder as EventsRiderSafetyReminder;
 use App\Events\ThankRider as EventsThankRider;
 use App\Events\ThankUser as EventsThankUser;
@@ -14,9 +17,12 @@ use App\Events\UserDeliveryOrder as EventsUserDeliveryOrder;
 use App\Events\UserDeliveryRemindReview as EventsUserDeliveryRemindReview;
 use App\Events\UserDeliveryReorder as EventsUserDeliveryReorder;
 use App\Events\UserDeliveryWait as EventsUserDeliveryWait;
+use App\Events\UserOrderCanceled as EventsUserOrderCanceled;
+use App\Events\UserReviewHasComment as EventsUserReviewHasComment;
 use App\Events\UserReviewHasReplied as EventsUserReviewHasReplied;
 use App\Events\UserReviewNewFollower as EventsUserReviewNewFollower;
 use App\Events\UserReviewWeeklyChallenge as EventsUserReviewWeeklyChallenge;
+use App\Events\UserSuccessPayment as EventsUserSuccessPayment;
 use App\Events\WelcomeNewRestaurant as EventsWelcomeNewRestaurant;
 use App\Events\WelcomeNewRider as EventsWelcomeNewRider;
 use App\Events\WelcomeNewUser as EventsWelcomeNewUser;
@@ -26,9 +32,12 @@ use App\Mail\WelcomeRestaurantEmail;
 use App\Mail\WelcomeRiderEmail;
 use App\Mail\WelcomeUserEmail;
 use App\Notifications\RestaurantHasReview;
+use App\Notifications\RiderCreateAccount;
 use App\Notifications\RiderNewOrder;
+use App\Notifications\RiderOrderCanceled;
 use App\Notifications\RiderOrderFinished;
 use App\Notifications\RiderOrderOnWay;
+use App\Notifications\RiderRejectedAccount;
 use App\Notifications\RiderSafetyReminder;
 use App\Notifications\ThankRider;
 use App\Notifications\ThankUser;
@@ -37,9 +46,12 @@ use App\Notifications\UserDeliveryOrder;
 use App\Notifications\UserDeliveryRemindReview;
 use App\Notifications\UserDeliveryReorder;
 use App\Notifications\UserDeliveryWait;
+use App\Notifications\UserOrderCanceled;
+use App\Notifications\UserReviewHasComment;
 use App\Notifications\UserReviewHasReplied;
 use App\Notifications\UserReviewNewFollower;
 use App\Notifications\UserReviewWeeklyChallenge;
+use App\Notifications\UserSuccessPayment;
 use App\Notifications\WelcomeNewRestaurant;
 use App\Notifications\WelcomeNewRider;
 use App\Notifications\WelcomeNewUser;
@@ -211,6 +223,56 @@ class NotificationController extends Controller
         return response()->json($user->notifications->first());
     }
 
+    public function sendUserSuccessPayment(string $id)
+    {
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
+        $user->notify(new UserSuccessPayment());
+        broadcast(new EventsUserSuccessPayment($user));
+        return response()->json($user->notifications->first());
+    }
+
+    public function sendUserOrderCanceled(string $id)
+    {
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
+        $user->notify(new UserOrderCanceled());
+        broadcast(new EventsUserOrderCanceled($user));
+        return response()->json($user->notifications->first());
+    }
+    
+    public function sendUserReviewHasComment(string $id)
+    {
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
+        $user->notify(new UserReviewHasComment());
+        broadcast(new EventsUserReviewHasComment($user));
+        return response()->json($user->notifications->first());
+    }
+
+    public function sendRiderCreateAccount(string $id)
+    {
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
+        $user->notify(new RiderCreateAccount());
+        broadcast(new EventsRiderCreateAccount($user));
+        return response()->json($user->notifications->first());
+    }
+
+    public function sendRiderRejectedAccount(string $id)
+    {
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
+        $user->notify(new RiderRejectedAccount());
+        broadcast(new EventsRiderRejectedAccount($user));
+        return response()->json($user->notifications->first());
+    }
+
     // Rider part
     public function sendWelcomeNewRider(string $id)
     {
@@ -274,6 +336,17 @@ class NotificationController extends Controller
 
         $user->notify(new ThankRider());
         broadcast(new EventsThankRider($user));
+        return response()->json($user->notifications->first());
+    }
+
+    
+    public function sendRiderOrderCanceled(string $id)
+    {
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
+        $user->notify(new RiderOrderCanceled());
+        broadcast(new EventsRiderOrderCanceled($user));
         return response()->json($user->notifications->first());
     }
 
