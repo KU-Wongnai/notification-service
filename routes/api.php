@@ -141,6 +141,12 @@ Route::get('/restaurant/noti/welcome/{id}', [NotificationController::class, 'sen
 
 Route::get('/restaurant/noti/has-review/{id}', [NotificationController::class, 'sendRestaurantHasReview']);
 
+Route::get('/restaurant/noti/create-account/{id}', [NotificationController::class, 'sendRestaurantCreateAccount']);
+
+Route::get('/restaurant/noti/rejected-account/{id}', [NotificationController::class, 'sendRestaurantRejectedAccount']);
+
+
+
 // ----------------------------------------------------------------------------------------------------------------------------
 
 Route::get('/notifications/{id}', [NotificationController::class, 'getAllNotification']);

@@ -7,11 +7,10 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class WelcomeNewRestaurant extends Notification
+class RestaurantRejectedAccount extends Notification
 {
     use Queueable;
-
-    /**
+/**
      * Create a new notification instance.
      */
     public function __construct()
@@ -48,7 +47,6 @@ class WelcomeNewRestaurant extends Notification
     public function toArray(object $notifiable)
     {
         return [ 'type' => 'Restaurant',
-                'message' => 'Your Restaurant has been verified. Welcome to KU Wongnai for Restaurants! Start managing your online reputation.',];
-
+                'message' => 'Your restaurant submission has been rejected. Please review the guidelines',];
     }
 }

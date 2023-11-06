@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RestaurantCreateAccount as EventsRestaurantCreateAccount;
 use App\Events\RestaurantHasReview as EventsRestaurantHasReview;
+use App\Events\RestaurantRejectedAccount as EventsRestaurantRejectedAccount;
 use App\Events\RiderCreateAccount as EventsRiderCreateAccount;
 use App\Events\RiderNewOrder as EventsRiderNewOrder;
 use App\Events\RiderOrderCanceled as EventsRiderOrderCanceled;
@@ -31,7 +33,9 @@ use App\Mail\ResetPasswordEmail;
 use App\Mail\WelcomeRestaurantEmail;
 use App\Mail\WelcomeRiderEmail;
 use App\Mail\WelcomeUserEmail;
+use App\Notifications\RestaurantCreateAccount;
 use App\Notifications\RestaurantHasReview;
+use App\Notifications\RestaurantRejectedAccount;
 use App\Notifications\RiderCreateAccount;
 use App\Notifications\RiderNewOrder;
 use App\Notifications\RiderOrderCanceled;
@@ -372,6 +376,28 @@ class NotificationController extends Controller
         broadcast(new EventsRestaurantHasReview($user));
         return response()->json($user->notifications->first());
     }
+
+    public function sendRestaurantCreateAccount(string $id)
+    {
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
+        $user->notify(new RestaurantCreateAccount());
+        broadcast(new EventsRestaurantCreateAccount($user));
+        return response()->json($user->notifications->first());
+    }
+
+    public function sendRestaurantRejectedAccount(string $id)
+    {
+        $user = new UserCreateController();
+        $user = $user->create($id);
+
+        $user->notify(new RestaurantRejectedAccount());
+        broadcast(new EventsRestaurantRejectedAccount($user));
+        return response()->json($user->notifications->first());
+    }
+
+    
 
 
 // ----------------------------------------------------------------------------------------------------------------------------

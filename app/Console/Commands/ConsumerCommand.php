@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Events\RestaurantCreateAccount as EventsRestaurantCreateAccount;
 use App\Events\RestaurantHasReview as EventsRestaurantHasReview;
+use App\Events\RestaurantRejectedAccount as EventsRestaurantRejectedAccount;
 use App\Events\RiderCreateAccount as EventsRiderCreateAccount;
 use App\Events\RiderNewOrder as EventsRiderNewOrder;
 use App\Events\RiderOrderCanceled as EventsRiderOrderCanceled;
@@ -35,7 +37,9 @@ use Illuminate\Support\Facades\Log;
 use App\RabbitMQReceiver;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\WelcomeUserEmail;
+use App\Notifications\RestaurantCreateAccount;
 use App\Notifications\RestaurantHasReview;
+use App\Notifications\RestaurantRejectedAccount;
 use App\Notifications\RiderCreateAccount;
 use App\Notifications\RiderNewOrder;
 use App\Notifications\RiderOrderCanceled;
@@ -341,6 +345,24 @@ class ConsumerCommand extends Command
                 $user = $user->create($data['to']);
                 $user->notify(new RestaurantHasReview());
                 broadcast(new EventsRestaurantHasReview($user));
+            }
+
+            if ($data['type'] === 'noti.RestaurantCreateAccount') {
+                Log::info('Received noti.RestaurantCreateAccount event', $data);
+                echo "Received noti.RestaurantCreateAccount event" . json_encode($data);
+                $user = new UserCreateController();
+                $user = $user->create($data['to']);
+                $user->notify(new RestaurantCreateAccount());
+                broadcast(new EventsRestaurantCreateAccount($user));
+            }
+
+            if ($data['type'] === 'noti.RestaurantRejectedAccount') {
+                Log::info('Received noti.RestaurantRejectedAccount event', $data);
+                echo "Received noti.RestaurantRejectedAccount event" . json_encode($data);
+                $user = new UserCreateController();
+                $user = $user->create($data['to']);
+                $user->notify(new RestaurantRejectedAccount());
+                broadcast(new EventsRestaurantRejectedAccount($user));
             }
 
         });
